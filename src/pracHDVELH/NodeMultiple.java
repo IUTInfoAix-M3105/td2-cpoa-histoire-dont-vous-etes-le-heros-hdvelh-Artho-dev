@@ -21,8 +21,7 @@ public class NodeMultiple {
 	/* Overridden methods */
 	@Override
 	public String toString() {
-		/* TO BE COMPLETED */
-		
+		return data.toString();		
 	}
 
 	/* Getters/Setters */
