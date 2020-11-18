@@ -17,12 +17,17 @@ public class Event extends NodeMultiple {
 	public static final String ERROR_MSG_UNEXPECTED_END = "Sorry, for some unexpected reason the story ends here...";
 	public static final String PROMPT_ANSWER = "Answer: ";
 	public static final String WARNING_MSG_INTEGER_EXPECTED = "Please input a integer within range!";
+	private String playerAnswer;
+	private GUIManager gui;
+	private int id;
+	private int chosenPath = 0;
 
 	/**
 	 * @return the playerAnswer
 	 */
 	public String getPlayerAnswer() {
 		/* TO BE COMPLETED */
+		return playerAnswer;
 	}
 
 	/**
@@ -30,6 +35,7 @@ public class Event extends NodeMultiple {
 	 */
 	public void setPlayerAnswer(String playerAnswer) {
 		/* TO BE COMPLETED */
+		this.playerAnswer = playerAnswer;
 	}
 
 	/**
@@ -51,6 +57,7 @@ public class Event extends NodeMultiple {
 	 */
 	public int getChosenPath() {
 		/* TO BE COMPLETED */
+		return chosenPath;
 	}
 
 	/**
@@ -58,6 +65,7 @@ public class Event extends NodeMultiple {
 	 */
 	public void setChosenPath(int chosenPath) {
 		/* TO BE COMPLETED */
+		this.chosenPath = chosenPath;
 	}
 
 	/* Methods */
@@ -66,6 +74,7 @@ public class Event extends NodeMultiple {
 	 */
 	public String getData() {
 		/* TO BE COMPLETED */
+		return super.toString();
 	}
 
 	/**
@@ -74,6 +83,7 @@ public class Event extends NodeMultiple {
 	 */
 	public void setData(String data) {
 		/* TO BE COMPLETED */
+		super.setData(data);
 	}
 
 	/**
@@ -82,6 +92,7 @@ public class Event extends NodeMultiple {
 	@Override
 	public Event getDaughter(int i) {
 		/* TO BE COMPLETED */
+		return (Event) super.getDaughter(i);
 	}
 
 	/**
@@ -91,6 +102,7 @@ public class Event extends NodeMultiple {
 	 */
 	public void setDaughter(Event daughter, int i) {
 		/* TO BE COMPLETED */
+		super.setDaughter(daughter, i);
 	}
 
 	/**
@@ -98,6 +110,7 @@ public class Event extends NodeMultiple {
 	 */
 	public GUIManager getGui() {
 		/* TO BE COMPLETED */
+		return gui;
 	}
 
 	/**
@@ -105,6 +118,7 @@ public class Event extends NodeMultiple {
 	 */
 	public void setGui(GUIManager gui) {
 		/* TO BE COMPLETED */
+		this.gui = gui;
 	}
 
 	/**
@@ -112,10 +126,39 @@ public class Event extends NodeMultiple {
 	 */
 	public int getId() {
 		/* TO BE COMPLETED */
+		return id;
 	}
 
 	/* Methods */
 	/* TO BE COMPLETED */
+	public void run() {
+		
+	}
+	
+	public Event() {
+		gui = new GUIManager();
+		setData(null);
+	}
+	
+	public Event(GUIManager gui, String data) {
+		setGui(gui);
+		setData(data);
+	}
+	
+	public String toString() {
+		return "Event #" + id + " (" + getClass() + "): " + getData();
+	}
+	
+	public boolean isFinal() {
+		return false;
+	}
+	
+	public boolean isinRange(int index) {
+		return false;
+	}
+	
+	public int interpretAnswer() {
+		
 	}
 }
 
