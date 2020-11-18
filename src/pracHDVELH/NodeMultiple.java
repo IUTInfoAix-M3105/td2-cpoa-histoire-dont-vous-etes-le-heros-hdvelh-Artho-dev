@@ -21,7 +21,7 @@ public class NodeMultiple {
 	/* Overridden methods */
 	@Override
 	public String toString() {
-		return data.toString();		
+		return data.toString();
 	}
 
 	/* Getters/Setters */
@@ -54,7 +54,7 @@ public class NodeMultiple {
 	 */
 	public void setDaughter(NodeMultiple daughter, int i) {
 		if (NODE_MAX_ARITY < i || 0 > i) ErrorNaiveHandler.abort(ERROR_MSG_INDEX_OUT_OF_RANGE+"@"+getClass()+".setDaughter()");
-		daughter[i] = daughter;
+		daughters[i] = daughter;
 	}
 
 	/**
@@ -68,7 +68,7 @@ public class NodeMultiple {
 	 * @param daughters the daughters to set
 	 */
 	public void setDaughters(NodeMultiple[] daughters) {
-		this.daughters = daughters
+		this.daughters = daughters;
 	}
 
 	/**
@@ -133,6 +133,8 @@ public class NodeMultiple {
 	public NodeMultiple(Object data) {
 		this();
 		this.data = data;
+	}
+	
 }
 
 // eof
