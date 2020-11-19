@@ -17,10 +17,12 @@ public class Event extends NodeMultiple {
 	public static final String ERROR_MSG_UNEXPECTED_END = "Sorry, for some unexpected reason the story ends here...";
 	public static final String PROMPT_ANSWER = "Answer: ";
 	public static final String WARNING_MSG_INTEGER_EXPECTED = "Please input a integer within range!";
+	private static int lastId = -1;
 	private String playerAnswer;
 	private GUIManager gui;
 	private int id;
-	private int chosenPath = 0;
+	private int chosenPath;
+	private Scanner reader;
 
 	/**
 	 * @return the playerAnswer
@@ -43,6 +45,7 @@ public class Event extends NodeMultiple {
 	 */
 	public Scanner getReader() {
 		/* TO BE COMPLETED */
+		return reader;
 	}
 
 	/**
@@ -50,6 +53,7 @@ public class Event extends NodeMultiple {
 	 */
 	public void setReader(Scanner reader) {
 		/* TO BE COMPLETED */
+		this.reader = reader;
 	}
 
 	/**
@@ -131,18 +135,28 @@ public class Event extends NodeMultiple {
 
 	/* Methods */
 	/* TO BE COMPLETED */
-	public void run() {
-		
+	public Event run() {
+		gui.outputln(toString());
+		gui.output(PROMPT_ANSWER);
+		playerAnswer = reader.next();
+		chosenPath = interpretAnswer();
+		if (isFinal()) {
+			return null;
+		}
+		return getDaughter(chosenPath);
 	}
 	
 	public Event() {
+		super(null);
 		gui = new GUIManager();
-		setData(null);
 	}
 	
 	public Event(GUIManager gui, String data) {
-		setGui(gui);
-		setData(data);
+		super(data);
+		this.gui = gui;
+		reader = gui.getInputReader();
+		id = ++lastId;
+		chosenPath = -1;
 	}
 	
 	public String toString() {
@@ -150,7 +164,7 @@ public class Event extends NodeMultiple {
 	}
 	
 	public boolean isFinal() {
-		return false;
+		return getDaughter(1) != null;
 	}
 	
 	public boolean isinRange(int index) {
@@ -158,7 +172,7 @@ public class Event extends NodeMultiple {
 	}
 	
 	public int interpretAnswer() {
-		
+		return chosenPath;
 	}
 }
 
