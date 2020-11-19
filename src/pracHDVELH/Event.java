@@ -140,9 +140,8 @@ public class Event extends NodeMultiple {
 		gui.output(PROMPT_ANSWER);
 		playerAnswer = reader.next();
 		chosenPath = interpretAnswer();
-		if (isFinal()) {
-			return null;
-		}
+		if (isFinal())
+			return null; //à vérifier
 		return getDaughter(chosenPath);
 	}
 	
